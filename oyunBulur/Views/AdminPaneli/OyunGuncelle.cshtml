@@ -1,0 +1,143 @@
+﻿@model oyunBulur.Models.Oyun
+@{
+    ViewBag.Title = "OyunGuncelle";
+    Layout = null;
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Oyun Güncelle</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://www.vhv.rs/dpng/d/440-4408153_red-dead-redemption-png-image-red-dead-redemption.png"
+          type="image/x-icon">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+
+    <link href="~/Content/style.css" rel="stylesheet" />
+</head>
+<body>
+
+    @*Marka ve Slogan bölümü.*@
+
+    <div class="slogan">
+        <a href='@Url.Action("AramaIndex", "Anasayfa")'>
+            <h1 class="name">
+                OYUNBULUR
+            </h1>
+
+            <h2 class="slogan-content">
+                Oyun mu arıyorsun? Oyunbulur.
+            </h2>
+        </a>
+    </div>
+    <div class="underline">
+        @*Navigasyon butonları.*@
+        <div class="testbtn2">
+
+            <a href='@Url.Action("Index", "TestSayfasi")' class="a" type="button">TEST</a>
+        </div>
+        <div class="contactbtn">
+
+            <a href='@Url.Action("Index", "ContactSayfasi")' class="b" type="button">İLETİŞİM</a>
+        </div>
+        <div class="suggestbtn">
+
+            <a href='@Url.Action("Index", "OneriSayfasi")' class="c" type="button">ÖNERİ</a>
+        </div>
+
+    </div>
+
+
+    @*Sayfa Müziği'ni başlatma-durdurma scripti.*@
+    <script>
+        function Play() {
+            var myVideo = document.getElementById("Video1");
+            if (myVideo.paused) {
+                myVideo.play();
+                document.getElementById("play").innerHTML = "Pause";
+            }
+            else {
+                myVideo.pause();
+                document.getElementById("Pause").innerHTML = "Play";
+            }
+        }
+    </script>
+
+
+    <div class="topmenu">
+
+        @*Müzik kontrol butonu.*@
+
+        <div class="sound">
+
+            <img src="~/img/playicon2.png" style="width: 40px; height: 40px; position: absolute; left: 51%; top: 1%" onClick="Play()">
+            <video width="0" height="0" id="Video1">
+                <source src="~/img/music.mp3">
+                <source src="~/img/music.mp3">
+            </video>
+
+
+
+
+        </div>
+    </div>
+
+    <div class="suggestlayer3">
+    </div>
+
+
+    @*//Oyuna ait verilerin güncellenmesi.*@
+
+    <form class="form-group" method="post">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+
+            @Html.ValidationSummary(true, "", new { @class = "form-control" })
+            @Html.HiddenFor(model => model.OyunID)
+
+            <h4 class="oyunismi2" style="position:absolute; left: 44.3%; top: 8%">Oyunun ismini belirtiniz.</h4>
+            <input type="text" id="OyunAdi" name="OyunAdi" class="newbuttonx" value="@Model.OyunAdi" required />
+
+            <h4 class="oyunismi2" style="position:absolute; left: 44.3%; top: 23%">Oyunun açıklamasını belirtiniz.</h4>
+            <input type="text" id="OyunAciklama" name="OyunAciklama" class="newbuttonx2" value="@Model.OyunAciklama" required />
+
+            <h4 class="oyunismi2" style="position:absolute; left: 44.3%; top: 37%">Mod ismini belirtiniz.</h4>
+            @Html.DropDownListFor(k => k.ModID, (List<SelectListItem>)ViewBag.dgr4, new { @class = "dropstyle6" })
+
+            <h4 class="oyunismi2" style="position:absolute; left: 44.3%; top: 48%">Platform ismini belirtiniz.</h4>
+            @Html.DropDownListFor(k => k.PlatformID, (List<SelectListItem>)ViewBag.dgr5, new { @class = "dropstyle7" })
+
+
+            <h4 class="oyunismi2" style="position:absolute; left: 44.3%; top: 60%">Perspektif ismini belirtiniz.</h4>
+            @Html.DropDownListFor(k => k.PerspektifID, (List<SelectListItem>)ViewBag.dgr2, new { @class = "dropstyle8" })
+
+
+            <h4 class="oyunismi2" style="position:absolute; left: 44.3%; top: 71%">Tema ismini belirtiniz.</h4>
+            @Html.DropDownListFor(k => k.TemaID, (List<SelectListItem>)ViewBag.dgr3, new { @class = "dropstyle9" })
+
+            <h4 class="oyunismi2" style="position:absolute; left: 44.3%; top: 82%">Tür ismini belirtiniz.</h4>
+            @Html.DropDownListFor(k => k.TurID, (List<SelectListItem>)ViewBag.dgr1, new { @class = "dropstyle10" })
+
+
+            <input style="display:none;" type="text" id="imgPath" name="imgPath" value="@Model.imgPath" required />
+            <input style="display:none;" type="text" id="pagePath" name="pagePath" value="@Model.pagePath" required />
+
+
+            <button style="position:absolute; left:47.5%; top:91.5%; width:150px; border:none; border-radius:25px; height:40px; background-color: #D7985D" class="oneritamamla">Tamamla</button>
+
+
+        }
+
+    </form>
+
+
+
+
+</body>
+</html>
+    

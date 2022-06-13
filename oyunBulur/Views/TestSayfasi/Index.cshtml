@@ -1,0 +1,198 @@
+﻿@model oyunBulur.Models.TestViewModel
+@{
+
+
+    ViewBag.Title = "TestListe";
+    Layout = null;
+}
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test Sayfası</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://www.vhv.rs/dpng/d/440-4408153_red-dead-redemption-png-image-red-dead-redemption.png"
+          type="image/x-icon">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+
+    <link href="~/Content/style.css" rel="stylesheet" />
+</head>
+    <body>
+        <section class="testscreen" id="testscreen">
+
+
+
+            @*Marka ve Slogan bölümü.*@
+            <div class="slogan">
+                <a href='@Url.Action("AramaIndex", "Anasayfa")'>
+                    <h1 class="name">
+                        OYUNBULUR
+                    </h1>
+
+                    <h2 class="slogan-content">
+                        Oyun mu arıyorsun? Oyunbulur.
+                    </h2>
+                </a>
+            </div>
+            <div class="underline">
+                @*Navigasyon butonları.*@
+                <div class="testbtn2">
+
+                    <a href='@Url.Action("Index", "TestSayfasi")' class="a" type="button">TEST</a>
+                </div>
+                <div class="contactbtn">
+
+                    <a href='@Url.Action("Index", "ContactSayfasi")' class="b" type="button">İLETİŞİM</a>
+                </div>
+                <div class="suggestbtn">
+
+                    <a href='@Url.Action("Index", "OneriSayfasi")' class="c" type="button">ÖNERİ</a>
+                </div>
+
+            </div>
+
+
+
+            @*Sayfa Müziği'ni başlatma-durdurma scripti.*@
+            <script>
+                function Play() {
+                    var myVideo = document.getElementById("Video1");
+                    if (myVideo.paused) {
+                        myVideo.play();
+                        document.getElementById("play").innerHTML = "Pause";
+                    }
+                    else {
+                        myVideo.pause();
+                        document.getElementById("Pause").innerHTML = "Play";
+                    }
+                }
+            </script>
+
+
+            <div class="topmenu">
+                @*Müzik kontrol butonu.*@
+
+                <div class="sound">
+
+                    <img src="~/img/playicon2.png" style="width: 40px; height: 40px; position: absolute; left: 51%; top: 1%" onClick="Play()">
+                    <video width="0" height="0" id="Video1">
+                        <source src="~/img/music.mp3">
+                        <source src="~/img/music.mp3">
+                    </video>
+                </div>
+            </div>
+
+            <div class="listelayer0n"></div>
+            <div class="listelayer0nn">
+
+                    @*Sol taraftaki detaylı arama elemanlarını içerir.
+                    Veriler Viewbag ile getirilir ancak sonuç farklı parametreyle yollanır.*@
+                @using (Html.BeginForm("Index", "TestSayfasi", FormMethod.Get))
+                {
+                    <h4 class="turler" style="position:absolute; left: 21%; top: 2%">Oyunun Türünü belirtiniz.</h4>
+                    @Html.DropDownListFor(f => f.SelectedStatus, (List<SelectListItem>)ViewBag.dgr1, "Tür Seç", new { @class = "dropstylen" })
+                    <h4 class="turler" style="position: absolute; left: 21%; top: 18%">Oyunun Temasini belirtiniz.</h4>
+                    @Html.DropDownListFor(f => f.SelectedStatus2, (List<SelectListItem>)ViewBag.dgr3, "Tema Seç", new { @class = "dropstylen2" })
+                    <h4 class="turler" style="position: absolute; left: 21%; top: 34%">Oyunun Modunu belirtiniz.</h4>
+                    @Html.DropDownListFor(f => f.SelectedStatus3, (List<SelectListItem>)ViewBag.dgr4, "Mod Seç", new { @class = "dropstylen3" })
+                    <h4 class="turler" style="position: absolute; left: 21%; top: 50%">Oyunun Platformunu belirtiniz.</h4>
+                    @Html.DropDownListFor(f => f.SelectedStatus4, (List<SelectListItem>)ViewBag.dgr5, "Platform Seç", new { @class = "dropstylen4" })
+                    <h4 class="turler" style="position: absolute; left: 21%; top: 71%">Oyunun Perspektifini belirtiniz.</h4>
+                    @Html.DropDownListFor(f => f.SelectedStatus5, (List<SelectListItem>)ViewBag.dgr2, "Perspektif Seç", new { @class = "dropstylen5" })
+                    <button style="position:absolute; left:12%; top:92%; width:150px; border:none; border-radius:25px; height:40px; background-color: #D7985D" class="oneritamamla">Tamamla</button>
+                }
+            </div>
+            <div class="listelayer0b"></div>
+            <div class="listelayer0bb">
+                    @*Tablo yapısı.*@
+                <table style="position:absolute; margin-left:15px; margin-top:15px;">
+
+                    <tr>
+                        <th>
+                            <label>Fotoğraf &nbsp&nbsp&nbsp</label><br><br><br>
+                        </th>
+
+                        <th>
+                            <label>&nbsp&nbsp&nbspOyun Adı</label><br><br><br><br>
+                        </th>
+
+                        <th>
+                            <label>Oyunun Açıklaması</label><br><br><br><br>
+                        </th>
+
+                        <th>
+                            <label>Oyunun Türü</label><br><br><br><br>
+                        </th>
+                        <th>
+                            <label>Oyunun Teması</label><br><br><br><br>
+                        </th>
+                        <th>
+                            <label>Oyunun Modu</label><br><br><br><br>
+                        </th>
+                        <th>
+                            <label>Oyunun Perspektifi</label><br><br><br><br>
+                        </th>
+                        <th>
+                            <label>pOyunun Platformu</label><br><br><br><br>
+                        </th>
+
+                    </tr>
+                            @*Foreach ile Oyun modelinden veri getirme.*@
+                    @foreach (var item in Model.Data)
+                    {
+
+
+                        <tr>
+                            <td>
+                                <a class="alink" href="@item.pagePath">
+                                    <img src="@item.imgPath" class="img-fluid" style="position:absolute; width:20px; height:20px;" /> <br><br><br><br>
+
+                            </td>
+
+                            @Html.HiddenFor(modelItem => item.OyunID)
+                            <td>
+                                <a class="alink" href="@item.pagePath">
+                                    @Html.DisplayFor(modelItem => item.OyunAdi)<br><br><br><br>
+                                </a>
+                            </td>
+                            <td>
+                                <a class="alink" href="@item.pagePath">
+                                    @Html.DisplayFor(modelItem => item.OyunAciklama)<br><br><br><br>
+                                </a>
+                            </td>
+                            <td>
+                                <a class="alink" href="@item.pagePath">
+                                    @item.Turs.TurAdi<br><br><br><br>
+                                </a>
+                            </td>
+                            <td>
+                                <a class="alink" href="@item.pagePath">
+                                    @item.Temas.TemaAdi<br><br><br><br>
+                                </a>
+                            </td>
+                            <td>
+                                <a class="alink" href="@item.pagePath">
+                                    @item.Mods.ModAdi<br><br><br><br>
+                                </a>
+                            </td>
+                            <td>
+                                <a class="alink" href="@item.pagePath">
+                                    @item.Perspektifs.PerspektifAdi<br><br><br><br>
+                                </a>
+                            </td>
+                            <td>
+                                <a class="alink" href="@item.pagePath">
+                                    @item.Platforms.PlatformAdi<br><br><br><br>
+                                </a>
+                            </td>
+                        </tr>
+
+                    }
+
+
+                </table>
+            </div>
+        </section>
+    </body>
+

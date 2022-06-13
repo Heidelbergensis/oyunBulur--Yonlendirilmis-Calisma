@@ -1,0 +1,130 @@
+﻿@model IEnumerable<oyunBulur.Models.Oyun>
+@{
+    ViewBag.Title = "AnaPanel";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin İşlemleri</title>
+
+    <link rel="icon" href="https://www.vhv.rs/dpng/d/440-4408153_red-dead-redemption-png-image-red-dead-redemption.png"
+          type="image/x-icon">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+
+    <link href="~/Content/style.css" rel="stylesheet" />
+</head>
+<body>
+
+
+    @*Marka ve Slogan bölümü.*@
+
+    <div class="slogan">
+        <a href='@Url.Action("AramaIndex", "Anasayfa")'>
+            <h1 class="name">
+                OYUNBULUR
+            </h1>
+
+            <h2 class="slogan-content">
+                Oyun mu arıyorsun? Oyunbulur.
+            </h2>
+        </a>
+    </div>
+    <div class="underline">
+
+        @*Navigasyon butonları.*@
+
+        <div class="testbtn2">
+
+            <a href='@Url.Action("Index", "TestSayfasi")' class="a" type="button">TEST</a>
+        </div>
+        <div class="contactbtn">
+
+            <a href='@Url.Action("Index", "ContactSayfasi")' class="b" type="button">İLETİŞİM</a>
+        </div>
+        <div class="suggestbtn">
+
+            <a href='@Url.Action("Index", "OneriSayfasi")' class="c" type="button">ÖNERİ</a>
+        </div>
+
+    </div>
+
+
+        @*Sayfa Müziği'ni başlatma-durdurma scripti.*@
+    <script>
+        function Play() {
+            var myVideo = document.getElementById("Video1");
+            if (myVideo.paused) {
+                myVideo.play();
+                document.getElementById("play").innerHTML = "Pause";
+            }
+            else {
+                myVideo.pause();
+                document.getElementById("Pause").innerHTML = "Play";
+            }
+        }
+   </script>
+
+
+    <div class="topmenu">
+
+
+        @*Müzik kontrol butonu.*@
+        <div class="sound">
+
+            <img src="~/img/playicon2.png" style="width: 40px; height: 40px; position: absolute; left:51%; top: 1%" onClick="Play()">
+            <video width="0" height="0" id="Video1">
+                <source src="~/img/music.mp3">
+                <source src="~/img/music.mp3">
+            </video>
+
+
+
+
+        </div>
+
+    </div>
+
+    <div class="adminlayer">
+        <br>
+        <h2 class="oyunismi" style=" position:absolute;left: 45%; top:1.2%;">ADMİN İŞLEMLERİ</h2>
+    </div>
+            @*Yönlendirme butonları.*@
+
+    <a href='@Url.Action("OyunEkle", "AdminPaneli")' class="newbutton" type="button">Oyun ekleme paneli.</a>
+
+    <a href='@Url.Action("OyunSil", "AdminPaneli")' class="newbutton2" type="button">Oyun silme paneli.</a>
+
+    <a href='@Url.Action("Index", "AdminPaneli")' class="newbutton3" type="button">Oyun güncelleme paneli.</a>
+    
+    <a href='@Url.Action("ModEkle", "AdminPaneli")' class="newbutton4" type="button">Mod ekleme paneli.</a>
+  
+    <a href='@Url.Action("ModSil", "AdminPaneli")' class="newbutton5" type="button">Mod silme paneli.</a>
+  
+    <a href='@Url.Action("TurSil", "AdminPaneli")' class="newbutton13" type="button">Tür silme paneli.</a>
+
+    <a href='@Url.Action("TurEkle", "AdminPaneli")' class="newbutton14" type="button">Tür ekleme paneli.</a>
+   
+    <a href='@Url.Action("OneriListe", "AdminPaneli")' class="newbutton15" type="button">Öneri Listesi paneli.</a>
+   
+    <a href='@Url.Action("PerspektifSil", "AdminPaneli")' class="newbutton6" type="button">Perspektif silme paneli.</a>
+   
+    <a href='@Url.Action("PlatformSil", "AdminPaneli")' class="newbutton7" type="button">Platform silme paneli.</a>
+  
+    <a href='@Url.Action("PlatformEkle", "AdminPaneli")' class="newbutton8" type="button">Platform ekleme paneli.</a>
+  
+    <a href='@Url.Action("AramaIndex", "Anasayfa")' class="newbutton9" type="button">Anasayfaya Dön.</a>
+  
+    <a href='@Url.Action("PerspektifEkle", "AdminPaneli")' class="newbutton10" type="button">Perspektif ekleme paneli.</a>
+  
+    <a href='@Url.Action("TemaEkle", "AdminPaneli")' class="newbutton11" type="button">Tema ekleme paneli.</a>
+
+    <a href='@Url.Action("TemaSil", "AdminPaneli")' class="newbutton12" type="button">Tema silme paneli.</a>
+
+
+</body>
+</html>
+

@@ -1,0 +1,119 @@
+﻿@model IEnumerable<oyunBulur.Models.Oyun>
+@{
+    ViewBag.Title = "OyunEkle";
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Anasayfa</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://www.vhv.rs/dpng/d/440-4408153_red-dead-redemption-png-image-red-dead-redemption.png"
+          type="image/x-icon">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+
+    <link href="~/Content/style.css" rel="stylesheet" />
+</head>
+<body>
+
+    @using (Html.BeginForm("AramaIndex", "Anasayfa", FormMethod.Post))
+    {
+        <p>
+                    @*Kullanıcının aradığı texti alan input kısmı.*@
+            <div class="wrapper">
+
+                <i class="fas fa-search" style="color: rebeccapurple"></i>
+                <input style="background: transparent;  background-color: #C4C4C4; opacity: 40%; " type="text" class="input" placeholder="Aramak için yazınız." name="p" @Html.TextBox("p")
+
+
+            </div>
+
+        </p>
+        <div class="searchbtn"></div>
+
+        <button style=" position:absolute; background-color:transparent; border: 0; text-decoration: none; color: black; left:45.1%; top:54.6%; font-size:large;" class="">Oyunbul</button>
+    }
+
+
+
+
+    <div class="testbtn">   </div>
+    <a href='@Url.Action("Index", "TestSayfasi")' style=" position:absolute; background-color:transparent; border: 0; text-decoration: none; color: black; left:53.3%; top:54.7%;" type="button">Test Önersin</a>
+
+
+    @*Marka ve Slogan bölümü.*@
+    <div class="slogan">
+        <a href='@Url.Action("AramaIndex", "Anasayfa")'>
+            <h1 class="name">
+                OYUNBULUR
+            </h1>
+
+            <h2 class="slogan-content">
+                Oyun mu arıyorsun? Oyunbulur.
+            </h2>
+        </a>
+    </div>
+    <div class="slogan2">
+        <a href='@Url.Action("AramaIndex", "Anasayfa")'>
+            <h1 class="name">
+                OYUNBULUR
+            </h1>
+
+
+        </a>
+    </div>
+    <div class="underline">
+        <div class="testbtn2">
+            @*Navigasyon butonları.*@
+
+            <a href='@Url.Action("Index", "TestSayfasi")' class="a" type="button">TEST</a>
+        </div>
+        <div class="contactbtn">
+
+            <a href='@Url.Action("Index", "ContactSayfasi")' class="b" type="button">İLETİŞİM</a>
+        </div>
+        <div class="suggestbtn">
+
+            <a href='@Url.Action("OyunOneri", "AdminPaneli")' class="c" type="button">ÖNERİ</a>
+        </div>
+
+    </div>
+
+
+    @*Sayfa Müziği'ni başlatma-durdurma scripti.*@
+
+    <script>
+        function Play() {
+            var myVideo = document.getElementById("Video1");
+            if (myVideo.paused) {
+                myVideo.play();
+                document.getElementById("play").innerHTML = "Pause";
+            }
+            else {
+                myVideo.pause();
+                document.getElementById("Pause").innerHTML = "Play";
+            }
+        }
+    </script>
+
+
+    <div class="topmenu">
+
+        @*Müzik kontrol butonu.*@
+
+        <div class="sound">
+
+            <img src="~/img/playicon2.png" style="width: 40px; height: 40px; position: absolute; left: 51%; top: 1%" onClick="Play()">
+            <video width="0" height="0" id="Video1">
+                <source src="~/img/music.mp3">
+                <source src="~/img/music.mp3">
+            </video>
+
+        </div>
+
+    </div>
+</body>
+</html>
