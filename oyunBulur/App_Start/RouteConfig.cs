@@ -16,7 +16,7 @@ namespace oyunBulur
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "AnaSayfaController", action = "AramaIndex", id = UrlParameter.Optional }
+                defaults: new { controller = "Anasayfa", action = "AramaIndex", id = UrlParameter.Optional }
             );
         }
     }
